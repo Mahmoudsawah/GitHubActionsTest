@@ -1,0 +1,27 @@
+#This when user push or pull request 
+
+name : push-pull request
+on: 
+  push:
+    branches:
+      - main
+      - "release/**"
+    paths:
+      - "src/**"
+
+  pull:
+    branches:
+      - main
+      - "release/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      -name: Checkout code
+        uses: actions/checkout@v6
+      
+      -name: run tests
+        run: npm test
+
+        
